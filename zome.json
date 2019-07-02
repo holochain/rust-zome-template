@@ -1,4 +1,4 @@
 {
-  "name": "{{ name }}"
+  "name": "{{ name }}",
   "description": "Generated from the rust-zome-template"
 }
