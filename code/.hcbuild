@@ -1,10 +1,41 @@
 {
-  "steps": {
-    "cargo": [
-      "build",
-      "--release",
-      "--target=wasm32-unknown-unknown",
-    ]
-  },
+  "steps": [
+    {
+      "command": "cargo",
+      "arguments": [
+        "build",
+        "--release",
+        "--target=wasm32-unknown-unknown",
+      ]
+    },
+    {
+      "command": "wasm-gc",
+      "arguments": ["target/wasm32-unknown-unknown/release/{{ name }}.wasm"]
+    },
+    {
+      "command": "wasm-opt",
+      "arguments": [
+        "-Oz",
+        "--vacuum",
+        "target/wasm32-unknown-unknown/release/{{ name }}.wasm"
+      ]
+    },
+    {
+      "command": "wasm2wat",
+      "arguments": [
+        "target/wasm32-unknown-unknown/release/{{ name }}.wasm",
+        "-o",
+        "target/wasm32-unknown-unknown/release/{{ name }}.wat"
+      ]
+    },
+    {
+      "command": "wat2wasm",
+      "arguments": [
+        "target/wasm32-unknown-unknown/release/{{ name }}.wat",
+        "-o",
+        "target/wasm32-unknown-unknown/release/{{ name }}.wasm"
+      ]
+    }
+  ],
   "artifact": "target/wasm32-unknown-unknown/release/{{ name }}.wasm"
 }
