@@ -5,38 +5,37 @@
       "arguments": [
         "build",
         "--release",
-        "--target-dir=target",
         "--target=wasm32-unknown-unknown"
       ]
     },
     {
       "command": "wasm-gc",
-      "arguments": ["target/wasm32-unknown-unknown/release/{{ name }}.wasm"]
+      "arguments": ["$CARGO_TARGET_DIR/wasm32-unknown-unknown/release/{{ name }}.wasm"]
     },
     {
       "command": "wasm-opt",
       "arguments": [
         "-Oz",
         "--vacuum",
-        "target/wasm32-unknown-unknown/release/{{ name }}.wasm"
+        "$CARGO_TARGET_DIR/wasm32-unknown-unknown/release/{{ name }}.wasm"
       ]
     },
     {
       "command": "wasm2wat",
       "arguments": [
-        "target/wasm32-unknown-unknown/release/{{ name }}.wasm",
+        "$CARGO_TARGET_DIR/wasm32-unknown-unknown/release/{{ name }}.wasm",
         "-o",
-        "target/wasm32-unknown-unknown/release/{{ name }}.wat"
+        "$CARGO_TARGET_DIR/wasm32-unknown-unknown/release/{{ name }}.wat"
       ]
     },
     {
       "command": "wat2wasm",
       "arguments": [
-        "target/wasm32-unknown-unknown/release/{{ name }}.wat",
+        "$CARGO_TARGET_DIR/wasm32-unknown-unknown/release/{{ name }}.wat",
         "-o",
-        "target/wasm32-unknown-unknown/release/{{ name }}.wasm"
+        "$CARGO_TARGET_DIR/wasm32-unknown-unknown/release/{{ name }}.wasm"
       ]
     }
   ],
-  "artifact": "target/wasm32-unknown-unknown/release/{{ name }}.wasm"
+  "artifact": "$CARGO_TARGET_DIR/wasm32-unknown-unknown/release/{{ name }}.wasm"
 }
