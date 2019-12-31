@@ -41,5 +41,5 @@
       ]
     }
   ],
-  "artifact": "$CARGO_TARGET_DIR/wasm32-unknown-unknown/release/{{ name }}.wasm"
+  "artifact": "${CARGO_TARGET_DIR:-$PWD/target}/wasm32-unknown-unknown/release/{{ name }}.wasm"
 }
