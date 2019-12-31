@@ -1,7 +1,7 @@
 {
   "steps": [
     {
-      "command": "cargo",
+      "command": "CARGO_TARGET_DIR=${CARGO_TARGET_DIR:-$PWD} cargo",
       "arguments": [
         "build",
         "--release",
@@ -9,11 +9,11 @@
       ]
     },
     {
-      "command": "wasm-gc",
+      "command": "CARGO_TARGET_DIR=${CARGO_TARGET_DIR:-$PWD} wasm-gc",
       "arguments": ["$CARGO_TARGET_DIR/wasm32-unknown-unknown/release/{{ name }}.wasm"]
     },
     {
-      "command": "wasm-opt",
+      "command": "CARGO_TARGET_DIR=${CARGO_TARGET_DIR:-$PWD} wasm-opt",
       "arguments": [
         "-Oz",
         "--vacuum",
@@ -21,7 +21,7 @@
       ]
     },
     {
-      "command": "wasm2wat",
+      "command": "CARGO_TARGET_DIR=${CARGO_TARGET_DIR:-$PWD} wasm2wat",
       "arguments": [
         "$CARGO_TARGET_DIR/wasm32-unknown-unknown/release/{{ name }}.wasm",
         "-o",
@@ -29,7 +29,7 @@
       ]
     },
     {
-      "command": "wat2wasm",
+      "command": "CARGO_TARGET_DIR=${CARGO_TARGET_DIR:-$PWD} wat2wasm",
       "arguments": [
         "$CARGO_TARGET_DIR/wasm32-unknown-unknown/release/{{ name }}.wat",
         "-o",
