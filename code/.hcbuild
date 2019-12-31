@@ -9,7 +9,8 @@
       "arguments": [
         "build",
         "--release",
-        "--target=wasm32-unknown-unknown"
+        "--target=wasm32-unknown-unknown",
+        "--target-dir=$CARGO_TARGET_DIR"
       ]
     },
     {
