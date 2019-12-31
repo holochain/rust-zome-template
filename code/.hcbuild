@@ -1,6 +1,10 @@
 {
   "steps": [
     {
+      "command": "CARGO_TARGET_DIR=${CARGO_TARGET_DIR:-$PWD} echo $CARGO_TARGET_DIR",
+      "arguments": []
+    },
+    {
       "command": "CARGO_TARGET_DIR=${CARGO_TARGET_DIR:-$PWD} cargo",
       "arguments": [
         "build",
