@@ -10,7 +10,7 @@ serde_json = { version = "=1.0.47", features = ["preserve_order"] }
 serde_derive = "=1.0.100"
 hdk = "={{ version }}"
 holochain_wasm_utils = "={{ version }}"
-holochain_json_derive = "=0.0.22"
+holochain_json_derive = "=0.0.21"
 
 [lib]
 path = "src/lib.rs"
