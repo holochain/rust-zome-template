@@ -5,9 +5,9 @@ authors = ["{{ author }}"]
 edition = "2018"
 
 [dependencies]
-serde = "=1.0.104"
+serde = "=1.0.100"
 serde_json = { version = "=1.0.47", features = ["preserve_order"] }
-serde_derive = "=1.0.104"
+serde_derive = "=1.0.100"
 hdk = "={{ version }}"
 holochain_wasm_utils = "={{ version }}"
 holochain_json_derive = "=0.0.22"
